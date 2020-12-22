@@ -5,28 +5,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "emp_training_required")
-public class EmpTrainingRequired {
+public class EmpTrainingRequired implements Serializable {
 
     @Id
-    @Column(name = "dept_id")
-    @JoinColumn(name = "id")
     @ManyToOne
+    @JoinColumn(name = "dept_id")
     private Dept dept;
 
     @Id
-    @Column(name = "title_id")
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "title_id")
     private Title title;
 
-    @Column(name = "training_id")
+
     @ManyToOne
-    @JoinColumn(name = "trainingNO")
+    @JoinColumn(name = "training_id")
     private Training training;
 }

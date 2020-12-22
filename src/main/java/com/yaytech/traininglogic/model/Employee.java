@@ -28,14 +28,14 @@ public class Employee {
 
     private String gender;
 
-    @Column(name = "dept_id")
+
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "dept_id")
     private Dept dept;
 
-    @Column(name = "title_id")
+
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "title_id")
     private Title title;
 
 
