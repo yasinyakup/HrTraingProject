@@ -1,6 +1,6 @@
 package com.yaytech.loginjwt.security.jwt;
 
-import com.yaytech.springjwt.security.services.UserDetailsImpl;
+import com.yaytech.loginjwt.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
