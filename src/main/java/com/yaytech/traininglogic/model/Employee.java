@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -37,6 +38,9 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "title_id")
     private Title title;
+
+   /* @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+    List<PersonalTrainingRecord> personalTrainingRecords;*/
 
 
 }
