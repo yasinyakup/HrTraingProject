@@ -1,15 +1,20 @@
 package com.yaytech.traininglogic.controller;
 
+import com.yaytech.traininglogic.dto.request.DeptRequest;
 import com.yaytech.traininglogic.model.Dept;
 import com.yaytech.traininglogic.model.Employee;
 import com.yaytech.traininglogic.repository.DeptRepository;
 import com.yaytech.traininglogic.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.resource.HttpResource;
 
+import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/logictest")
@@ -23,6 +28,14 @@ public class LogicController {
     public List<Dept> getAllDept(){
         return deptRepository.findAll();
     }
+
+    @PostMapping("/newdept")
+    public ResponseEntity saveDept(@RequestBody DeptRequest deptRequest){
+        Dept dept = Dept.builder().deptName(deptRequest.getName()).build();
+        deptRepository.save(dept);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 
     @GetMapping("/employee")
     private List<Employee> getAllEmployee(){

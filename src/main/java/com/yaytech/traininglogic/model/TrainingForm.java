@@ -16,6 +16,7 @@ import java.util.List;
 public class TrainingForm {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "trainingForm")

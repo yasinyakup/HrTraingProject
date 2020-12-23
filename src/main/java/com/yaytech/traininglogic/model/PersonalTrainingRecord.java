@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class PersonalTrainingRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne

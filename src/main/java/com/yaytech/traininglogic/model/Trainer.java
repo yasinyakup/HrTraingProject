@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Trainer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String name;
