@@ -1,5 +1,6 @@
 package com.yaytech.traininglogic.dto.response;
 
+import com.yaytech.loginjwt.model.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class EmpTrainingResponse {
     private String archiveNo;
 
     private double hour;
+
+
 
 
 }

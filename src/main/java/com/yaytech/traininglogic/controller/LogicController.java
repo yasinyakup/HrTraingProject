@@ -1,5 +1,6 @@
 package com.yaytech.traininglogic.controller;
 
+import com.yaytech.loginjwt.model.RoleEnum;
 import com.yaytech.traininglogic.dto.request.DeptRequest;
 import com.yaytech.traininglogic.model.Dept;
 import com.yaytech.traininglogic.model.Employee;
