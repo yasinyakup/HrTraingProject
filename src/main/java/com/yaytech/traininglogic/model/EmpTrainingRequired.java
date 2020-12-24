@@ -16,15 +16,9 @@ import java.io.Serializable;
 @Table(name = "emp_training_required")
 public class EmpTrainingRequired implements Serializable {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "dept_id")
-    private Dept dept;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "title_id")
-    private Title title;
+    @EmbeddedId
+    private PositionId positionId;
 
 
     @ManyToOne
