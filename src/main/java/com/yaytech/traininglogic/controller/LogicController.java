@@ -2,10 +2,13 @@ package com.yaytech.traininglogic.controller;
 
 import com.yaytech.loginjwt.model.RoleEnum;
 import com.yaytech.traininglogic.dto.request.DeptRequest;
+import com.yaytech.traininglogic.dto.response.EmpTrainingResponse;
+import com.yaytech.traininglogic.dto.response.EmployeeResponse;
 import com.yaytech.traininglogic.model.Dept;
 import com.yaytech.traininglogic.model.Employee;
 import com.yaytech.traininglogic.repository.DeptRepository;
 import com.yaytech.traininglogic.repository.EmployeeRepository;
+import com.yaytech.traininglogic.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +21,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/logictest")
 @AllArgsConstructor
 public class LogicController {
 
+    private final EmployeeService employeeService;
     private final DeptRepository deptRepository;
     private final EmployeeRepository employeeRepository;
 
@@ -37,9 +42,14 @@ public class LogicController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @GetMapping("/empwithhour")
+    public List<EmpTrainingResponse> getAllEmpWithHour(){
+       return employeeService.getEmployeesWithHourNotNull();
+    }
+
 
     @GetMapping("/employee")
-    private List<Employee> getAllEmployee(){
-        return employeeRepository.findAll();
+    private List<EmployeeResponse> getAllEmployee(){
+        return employeeService.getAllEmployees();
     }
 }

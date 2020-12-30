@@ -45,7 +45,7 @@ public class Employee {
     private Title title;
 
    /* @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    List<PersonalTrainingRecord> personalTrainingRecords;*/
-
+    List<PersonalTrainingRecord> personalTrainingRecords;
+*/
 
 }
