@@ -1,6 +1,5 @@
 package com.yaytech.traininglogic.dto.response;
 
-import com.yaytech.loginjwt.model.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmpTrainingResponse {
+public class EmpTrainingResponseAsSingle {
     private String empNo;
 
     private String fullName;
@@ -21,7 +20,11 @@ public class EmpTrainingResponse {
 
     private String title;
 
-  private List<TrainingInfo> trainingInfos;
+    private String trainingName;
+
+    private String archiveNo;
+
+    private double hour;
 
 
 

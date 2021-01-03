@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Training {
     @Id
     @Column(name = "training_no")
-    private String trainingNO;
+    private String trainingNo;
 
     private String name;
 

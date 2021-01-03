@@ -3,11 +3,14 @@ package com.yaytech.traininglogic.controller;
 import com.yaytech.loginjwt.model.RoleEnum;
 import com.yaytech.traininglogic.dto.request.DeptRequest;
 import com.yaytech.traininglogic.dto.response.EmpTrainingResponse;
+import com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingle;
 import com.yaytech.traininglogic.dto.response.EmployeeResponse;
+import com.yaytech.traininglogic.dto.response.TrainingDto;
 import com.yaytech.traininglogic.model.Dept;
 import com.yaytech.traininglogic.model.Employee;
 import com.yaytech.traininglogic.repository.DeptRepository;
 import com.yaytech.traininglogic.repository.EmployeeRepository;
+import com.yaytech.traininglogic.repository.PersonalTrainingRecordRepository;
 import com.yaytech.traininglogic.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,7 +31,8 @@ public class LogicController {
 
     private final EmployeeService employeeService;
     private final DeptRepository deptRepository;
-    private final EmployeeRepository employeeRepository;
+    private final PersonalTrainingRecordRepository personalTrainingRecordRepository;
+
 
     @GetMapping("/dept")
     public List<Dept> getAllDept(){
@@ -43,13 +47,32 @@ public class LogicController {
     }
 
     @GetMapping("/empwithhour")
-    public List<EmpTrainingResponse> getAllEmpWithHour(){
-       return employeeService.getEmployeesWithHourNotNull();
+    public List<EmpTrainingResponseAsSingle> getAllEmpWithHour(){
+       return employeeService.getEmpTrainingResponseAsSingle();
     }
 
 
-    @GetMapping("/employee")
-    private List<EmployeeResponse> getAllEmployee(){
+    @GetMapping("/employees")
+    public List<EmployeeResponse> getAllEmployee(){
         return employeeService.getAllEmployees();
     }
+
+    @GetMapping("/employees/{id}")
+    public EmployeeResponse getEmployee(@PathVariable String id){
+        return employeeService.getEmployee(id);
+    }
+
+
+    @GetMapping("/employees-single")
+    public List<EmpTrainingResponseAsSingle> getAllrecord(){
+        return employeeService.getAllRecords();
+    }
+    @GetMapping("/trainings")
+    public List<TrainingDto> getAllrecordWithoutArchiveNo(){
+        return personalTrainingRecordRepository.findAllRecord();
+    }
+
+
+
+
 }

@@ -1,29 +1,23 @@
 package com.yaytech.traininglogic.dto.response;
 
-import com.yaytech.loginjwt.model.RoleEnum;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmpTrainingResponse {
+public class TrainingDto {
     private String empNo;
 
     private String fullName;
 
-    private String dept;
+    private String trainingNo;
 
-    private String title;
+    private String trainingName;
 
-  private List<TrainingInfo> trainingInfos;
-
-
-
-
+    private double hour;
 }
