@@ -2,6 +2,7 @@ package com.yaytech.traininglogic.controller;
 
 import com.yaytech.loginjwt.model.RoleEnum;
 import com.yaytech.traininglogic.dto.request.DeptRequest;
+import com.yaytech.traininglogic.dto.request.EmployeeRequest;
 import com.yaytech.traininglogic.dto.response.EmpTrainingResponse;
 import com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingle;
 import com.yaytech.traininglogic.dto.response.EmployeeResponse;
@@ -13,6 +14,7 @@ import com.yaytech.traininglogic.repository.EmployeeRepository;
 import com.yaytech.traininglogic.repository.PersonalTrainingRecordRepository;
 import com.yaytech.traininglogic.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +36,7 @@ public class LogicController {
     private final PersonalTrainingRecordRepository personalTrainingRecordRepository;
 
 
-    @GetMapping("/dept")
-    public List<Dept> getAllDept(){
-        return deptRepository.findAll();
-    }
+
 
     @PostMapping("/newdept")
     public ResponseEntity saveDept(@RequestBody DeptRequest deptRequest){
@@ -70,6 +69,18 @@ public class LogicController {
     @GetMapping("/trainings")
     public List<TrainingDto> getAllrecordWithoutArchiveNo(){
         return personalTrainingRecordRepository.findAllRecord();
+    }
+
+    @PostMapping("/employee")
+    public Employee saveEmployee(@RequestBody Employee employee){
+        System.out.println(employee);
+
+        return employeeService.saveEmployee(employee);
+    }
+
+    @GetMapping("/employees/dept/{id}")
+    public List<EmployeeResponse> getAllEmployeeByDept(@PathVariable long id){
+        return employeeService.getEmployeeByDept(id);
     }
 
 

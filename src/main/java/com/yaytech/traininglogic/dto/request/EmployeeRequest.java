@@ -1,6 +1,9 @@
 package com.yaytech.traininglogic.dto.request;
 
+import com.yaytech.traininglogic.model.Dept;
+import com.yaytech.traininglogic.model.Title;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +12,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class EmployeeRequest {
     private String empNo;
 
@@ -20,7 +24,7 @@ public class EmployeeRequest {
 
     private String gender;
 
-    private String dept;
+    private Dept dept;
 
-    private String title;
+    private Title title;
 }

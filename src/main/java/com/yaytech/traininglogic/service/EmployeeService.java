@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,16 @@ public class EmployeeService {
     @Autowired
     private TrainingRepository trainingRepository;
 
+    public Employee saveEmployee(Employee employee){
+        return employeeRepository.save(employee);
+
+    }
+
+    public List<EmployeeResponse> getEmployeeByDept(Long deptId){
+        return employeeRepository.findAllByDept_Id(deptId).stream()
+                .map(this::mapToEmployeeResponse).collect(Collectors.toList());
+
+    }
 
     public List<EmpTrainingResponse> getEmployeesWithHour(){
         return employeeRepository.findAll().stream().map(employee -> mapToEmpDto(employee)).collect(Collectors.toList());
