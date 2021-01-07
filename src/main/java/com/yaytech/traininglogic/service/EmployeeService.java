@@ -65,7 +65,8 @@ public class EmployeeService {
     }
 
     public List<EmpTrainingResponseAsSingle> getEmpTrainingResponseAsSingle2(){
-        return personalTrainingRecordRepository.findAllRecord2();
+        return personalTrainingRecordRepository.findAllRecord3().stream().map(this::dtoToEmpTrainingResponseAsSingle)
+                .collect(Collectors.toList());
     }
 
     public EmployeeResponse getEmployee(String empNO){
@@ -106,6 +107,19 @@ public class EmployeeService {
                 .title(employee.getTitle().getTitle())
                 .trainingName(training.getName())
                 .hour(trainingDto.getHour())
+                .build();
+
+    }
+
+    private EmpTrainingResponseAsSingle dtoToEmpTrainingResponseAsSingle(EmpTrainingResponseAsSingledto eDto){
+        return EmpTrainingResponseAsSingle.builder()
+                .empNo(eDto.getEmployee().getEmpNo())
+                .fullName(eDto.getEmployee().getFullName())
+                .dept(eDto.getEmployee().getDept().getDeptName())
+                .title(eDto.getEmployee().getTitle().getTitle())
+                .trainingNo(eDto.getTrainingNo())
+                .trainingName(eDto.getTrainingName())
+                .hour(eDto.getHour())
                 .build();
 
     }

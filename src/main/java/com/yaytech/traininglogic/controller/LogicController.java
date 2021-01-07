@@ -83,6 +83,12 @@ public class LogicController {
         return employeeService.getEmployeeByDept(id);
     }
 
+    @GetMapping("/employees-single2")
+    public List<EmpTrainingResponseAsSingle> getAllrecord2(){
+        return employeeService.getEmpTrainingResponseAsSingle2();
+    }
+
+
 
 
 

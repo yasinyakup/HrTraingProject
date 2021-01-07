@@ -1,6 +1,7 @@
 package com.yaytech.traininglogic.repository;
 
 import com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingle;
+import com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingledto;
 import com.yaytech.traininglogic.dto.response.TrainingDto;
 import com.yaytech.traininglogic.model.Employee;
 import com.yaytech.traininglogic.model.PersonalTrainingRecord;
@@ -20,11 +21,21 @@ public interface PersonalTrainingRecordRepository extends JpaRepository<Personal
 
 
     @Query("select new com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingle(e.empNo, e.fullName, e.dept.deptName, " +
-            " e.title.title, tf.training.name, tf.archiveNo, "  +
+            " e.title.title, tf.training.trainingNo, tf.training.name, tf.archiveNo, "  +
             " sum(ptr.trainingForm.hour)) from  PersonalTrainingRecord ptr, TrainingForm tf, Employee e" +
             " where tf.id = ptr.id and ptr.employee.empNo = e.empNo"+
             " group by ptr.employee.empNo, ptr.trainingForm.training.trainingNo")
     public List<EmpTrainingResponseAsSingle> findAllRecord2();
+
+
+
+    @Query("select new com.yaytech.traininglogic.dto.response.EmpTrainingResponseAsSingledto(ptr.employee, ptr.trainingForm.training.trainingNo, ptr.trainingForm.training.name, "  +
+            " sum(ptr.trainingForm.hour)) from  PersonalTrainingRecord ptr"+
+            " group by ptr.employee, ptr.trainingForm.training.trainingNo, ptr.trainingForm.training.name")
+    public List<EmpTrainingResponseAsSingledto> findAllRecord3();
+
+
+
 
     /*
       return EmpTrainingResponseAsSingle.builder()
